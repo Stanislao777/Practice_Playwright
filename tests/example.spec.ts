@@ -19,6 +19,8 @@ test('get started link', async ({ page }) => {
 
 test('initial test', async ({page}) => {
 
-  
+  await page.goto('https://www.mercadolibre.com.co')
+
+  await page.locator('input[id=\'cb1-edit\']').fill('Iphone')
 
 });
