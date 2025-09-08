@@ -28,12 +28,27 @@ test('initial test', async ({page}) => {
   
   
   
-  const titles = await page.locator('//ol[contains(@class, \'ui-search-layout\')]//li//h2').allInnerTexts()
+  /*const titles = await page.locator('//ol[contains(@class, \'ui-search-layout\')]//li//h2').allInnerTexts()
   
   console.log('The total number of result is:', titles.length)
   for(let title of titles){
     console.log('The titles is: ', title)
-  }
+  }*/
   //await page.pause()
+  
+  const items = await page.locator('//ol[contains(@class, "ui-search-layout")]//li').elementHandles();
+
+  for (const item of items) {
+    const h3 = await item.$('h3'); // busca el h2 dentro del li
+    if (h3) {
+      const titulo = await h3.innerText();
+      console.log(titulo);
+      } else {
+      console.log('Este <li> no tiene <h3>');
+    }
+  
+}
+
+
 
 });
