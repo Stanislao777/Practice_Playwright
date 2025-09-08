@@ -39,7 +39,7 @@ test('initial test', async ({page}) => {
   const items = await page.locator('//ol[contains(@class, "ui-search-layout")]//li').elementHandles();
 
   for (const item of items) {
-    const h3 = await item.$('h3'); // busca el h2 dentro del li
+    const h3 = await item.$('h3'); // busca el h3 dentro del li
     if (h3) {
       const titulo = await h3.innerText();
       console.log(titulo);
