@@ -16,6 +16,7 @@ test('test locators', async ({ page }) => {
   await page.pause()
   
   //await page.locator('#name').fill('algo')
-  await page.locator('xpath=//input[@class="form"]').fill('Introduciendo texto "algo"')
+  //await page.locator('xpath=//input[@class="form"]').fill('Introduciendo texto "algo"')
+  await page.locator('input[class="form"]').fill('Introduciendo texto "algo"')
   await page.pause()
 });
