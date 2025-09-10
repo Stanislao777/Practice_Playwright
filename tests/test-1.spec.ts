@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
   // Recording...
-  await page.goto('https://www.mercadolibre.com.co');
+  await page.goto('https://www.mercadolibre.com');
   await page.getByRole('link', { name: 'Colombia' }).click();
   await page.getByRole('combobox', { name: 'Ingresa lo que quieras' }).click();
   await page.getByRole('combobox', { name: 'Ingresa lo que quieras' }).fill('Iphone');
