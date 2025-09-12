@@ -20,3 +20,15 @@ test('test locators', async ({ page }) => {
   await page.locator('input[class="form"]').fill('Introduciendo texto "algo"')
   await page.pause()
 });
+
+
+test('test locators 2da parte', async ({ page }) => {
+  
+  await page.goto('https://www.mercadolibre.com.co')
+  //await page.getByRole('link', { name: 'Mis compras'}).click()
+  //await page.getByRole('link', { name: 'Mis compras', exact: true }).click(); // ignora coincidencias parciales como "Mis compras P" 
+  await page.getByRole('link', { name: 'Ingresa', exact: true }).click();
+
+  await page.pause()
+  
+});
