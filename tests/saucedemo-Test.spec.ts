@@ -24,7 +24,18 @@ test('purchase an item', async ({ page }) => {
 
   await page.locator('a.shopping_cart_link').click()
 
-  await page.pause()
+  //await page.pause()
+
+  expect(page.getByRole('button', {name: 'Checkout'})).toBeVisible()
+
+  const actualName = await page.locator('.inventory_item_name').innerText()
+  const actualDescription = await page.locator('.inventory_item_desc').innerText()
+  const actualPrice = await page.locator('.inventory_item_price').innerText()
+
+  expect(actualName).toEqual(expectedName)
+  expect(actualDescription).toEqual(expectedDescription)
+  expect(actualPrice).toEqual(actualPrice)
+
 });
 
 
