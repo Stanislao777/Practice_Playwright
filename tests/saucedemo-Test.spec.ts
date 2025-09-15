@@ -20,7 +20,11 @@ test('purchase an item', async ({ page }) => {
   
   console.log(`Price: ${expectedPrice} Name: ${expectedName} Description: ${expectedDescription}`)
 
-  //await page.pause()
+  await randomItem.getByRole('button', {name:'Add to cart'}).click()
+
+  await page.locator('a.shopping_cart_link').click()
+
+  await page.pause()
 });
 
 
