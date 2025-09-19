@@ -7,20 +7,20 @@ export class LoginPage{
     private readonly loginButton: Locator
 
     constructor(page: Page){
-        this.usernameTextbox = page.getByRole('textbox', {name:'Username'})
-        this.passwordTextbox = page.getByRole('textbox', {name:'Password'})
-        this.loginButton = page.getByRole('textbox', {name:'Login'})
+        this.usernameTextbox = page.getByRole('textbox', { name: 'Username' })
+        this.passwordTextbox = page.getByRole('textbox', { name: 'Password' })
+        this.loginButton = page.getByRole('button', { name: 'Login' })
     }
 
     async fillUsername(){
-        this.usernameTextbox.fill('standard_user')
+        await this.usernameTextbox.fill('standard_user')
     }
 
     async fillPassword(){
-        this.passwordTextbox.fill('secret_sauce')
+        await this.passwordTextbox.fill('secret_sauce')
     }
 
-    async clickOnLogin(){
-        this.loginButton.fill('Login')
-    }    
+    async clickOnLogin() {
+        await this.loginButton.click()
+    }   
 }
