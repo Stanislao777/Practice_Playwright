@@ -10,8 +10,8 @@ test('purchase an item', async ({ page }) => {
   await page.getByRole('button', {name:'Login'}).click()*/
 
   const loginPage = new LoginPage(page)
-  await loginPage.fillUsername()
-  await loginPage.fillPassword()
+  await loginPage.fillUsername('standard_user')
+  await loginPage.fillPassword('secret_sauce')
   await loginPage.clickOnLogin()
   
   const itemsContainer = await page.locator('#inventory_container .inventory_item').all()
