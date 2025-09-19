@@ -34,7 +34,7 @@ test('purchase an item', async ({ page }) => {
 
   expect(actualName).toEqual(expectedName)
   expect(actualDescription).toEqual(expectedDescription)
-  expect(actualPrice).toEqual(actualPrice)
+  expect(actualPrice).toEqual(expectedPrice)
 
 });
 
