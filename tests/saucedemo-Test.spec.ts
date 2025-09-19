@@ -1,12 +1,18 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from './pageObjects/LoginPage';
 
 test('purchase an item', async ({ page }) => {
 
   await page.goto('https://saucedemo.com')
   
-  await page.getByRole('textbox', {name:'Username'}).fill('standard_user')
+  /*await page.getByRole('textbox', {name:'Username'}).fill('standard_user')
   await page.getByRole('textbox', {name:'Password'}).fill('secret_sauce')
-  await page.getByRole('button', {name:'Login'}).click()
+  await page.getByRole('button', {name:'Login'}).click()*/
+
+  const loginPage = new LoginPage(page)
+  await loginPage.fillUsername()
+  await loginPage.fillPassword()
+  await loginPage.clickOnLogin()
   
   const itemsContainer = await page.locator('#inventory_container .inventory_item').all()
   
