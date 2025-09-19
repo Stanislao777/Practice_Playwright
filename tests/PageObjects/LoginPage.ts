@@ -22,5 +22,13 @@ export class LoginPage{
 
     async clickOnLogin() {
         await this.loginButton.click()
-    }   
+    }
+
+
+    async loginWithCredentials(userName:string, password:string){
+        await this.fillUsername(userName)
+        await this.fillPassword(password)
+        await this.clickOnLogin()
+    }
+
 }
