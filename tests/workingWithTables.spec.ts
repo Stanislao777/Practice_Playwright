@@ -10,9 +10,18 @@ test('test web table', async ({ page }) => {
   
   console.log(rows.length)
 
-  for(let row of rows){
+  /* for(let row of rows){
     console.log(await row.innerText())
-  }
+  } */
+
+  const row1 = rows.at(1)
+
+  const countryName = await row1?.locator('xpath=.//td[2]').innerText()
+  const countryCapital = await row1?.locator('xpath=.//td[3]').innerText()
+  const countryCurrency = await row1?.locator('xpath=.//td[4]').innerText()
+
+  console.log(countryName, countryCapital, countryCurrency)
+  
 
   await page.pause()
 });
