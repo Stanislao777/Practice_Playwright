@@ -23,10 +23,14 @@ test('test web table', async ({ page }) => {
     countries.push(country)
   }
 
-  for (let pais of countries) {
-    console.log(pais)
-  }
+  /* for (let country of countries) {
+    console.log(country)
+  } */
 
+  const countryWherePeopleSpeakEnglish = countries.filter(country => country.primaryLanguage === 'English')
+
+  console.log('Countries where people speak English', countryWherePeopleSpeakEnglish)
+  
   await page.pause()
 });
 
