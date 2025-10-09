@@ -7,24 +7,36 @@ test('test web table', async ({ page }) => {
   const tableContainer = await page.locator("xpath=//table[@id='countries']")
 
   const rows = await tableContainer.locator("xpath=.//tr").all()
+
+  const countries: Country[] = []
   
   console.log(rows.length)
 
-  /* for(let row of rows){
-    console.log(await row.innerText())
-  } */
+  for(let row of rows){
+    let country: Country = {
+      name: await row.locator('xpath=.//td[2]').innerText(),
+      capital: await row.locator('xpath=.//td[3]').innerText(),
+      currency: await row.locator('xpath=.//td[4]').innerText(),
+      primaryLanguage: await row.locator('xpath=.//td[5]').innerText()
+    }
 
-  const row1 = rows.at(1)
+    countries.push(country)
+  }
 
-  const countryName = await row1?.locator('xpath=.//td[2]').innerText()
-  const countryCapital = await row1?.locator('xpath=.//td[3]').innerText()
-  const countryCurrency = await row1?.locator('xpath=.//td[4]').innerText()
-
-  console.log(countryName, countryCapital, countryCurrency)
-  
+  for (let pais of countries) {
+    console.log(pais)
+  }
 
   await page.pause()
 });
+
+
+interface Country{
+  name: string
+  capital: string
+  currency: string
+  primaryLanguage: string
+}
 
 /*
 element container: //table[@id='countries']
