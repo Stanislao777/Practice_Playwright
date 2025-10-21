@@ -5,18 +5,14 @@ test('purchase an item 2', async ({ page }) => {
     
     await page.on("request", (req) => {
         console.log(req.url())
-    })
-
+    });
+    
     await page.route(
-        "https://www.saucedemo.com/static/media/bike-light-1200x1500.37c843b0.jpg",
+        //usando expresión regular, bloqueando todo tipo de formatos de imágenes 
+        "**/*.{png.jpg.jpeg.svg}",
         (route) => route.abort()
     );
     
-    await page.route(
-        "https://www.saucedemo.com/static/media/bolt-shirt-1200x1500.c2599ac5.jpg",
-        (route) => route.abort()
-    );
-
     await page.goto("https://saucedemo.com");
     const login = new LoginPage(page);
     await login.loginWithCredentials("standard_user", "secret_sauce");
